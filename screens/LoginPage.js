@@ -67,13 +67,13 @@ const LoginPage = ({ navigation }) => {
     } else {
       try {
         const sendCode = sendOtpToPhone(auth, number, recaptchaVerifier);
+      Toast.show("Success : Verification code has been sent to your phone");
         console.log(sendCode);
         setConfirm(false);
       } catch (error) {
         setError(`Error : ${error.message}`);
         setConfirm(true);
       }
-      Toast.show("Success : Verification code has been sent to your phone");
       console.log(result);
     }
   }
@@ -87,6 +87,7 @@ const LoginPage = ({ navigation }) => {
       try {
         console.log("entry in phone auth provider");
         const verifyMyCode = signInWithPhone(auth, result, verifyNumber);
+      Toast.show("Success: Login Successfully");
         console.log("redirecting to home page", verifyMyCode);
         setConfirm(true);
       } catch (error) {
@@ -94,7 +95,6 @@ const LoginPage = ({ navigation }) => {
         console.log(`Error : ${error.message}`);
         setConfirm(true);
       }
-      Toast.show("Success: Login Successfully");
       navigation.dispatch(StackActions.replace("Home"));
     }
   }

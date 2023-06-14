@@ -7,14 +7,14 @@ import { getDatabase } from "firebase/database";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBluUNrHfJZWPPO4AVew4j9OH6lGAi63Qw",
-  authDomain: "dkdx-gaming-80da8.firebaseapp.com",
-  databaseURL: "https://dkdx-gaming-80da8-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "dkdx-gaming-80da8",
-  storageBucket: "dkdx-gaming-80da8.appspot.com",
-  messagingSenderId: "826876603564",
-  appId: "1:826876603564:web:a519fc53663bb35d1ec309",
-  measurementId: "G-53KCSKD3L1"
+  apiKey: "AIzaSyCzDrL4iT9ag6bjxH6ZiG3c5lxP7uQyvfs",
+  authDomain: "a2s-task.firebaseapp.com",
+  databaseURL: "https://a2s-task-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "a2s-task",
+  storageBucket: "a2s-task.appspot.com",
+  messagingSenderId: "444633169019",
+  appId: "1:444633169019:web:2714e076c9f048464076de",
+  measurementId: "G-PYQ4BND1VD"
 };
 
 

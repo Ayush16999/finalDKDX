@@ -23,10 +23,17 @@ export default {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFFFFF",
       },
+      package: "com.ayush16999.fbphoneauth"
     },
     web: {
       favicon: "./assets/favicon.png",
     },
+    extra:{
+      eas:{
+        projectId: "32276103-7225-4c90-a12c-f619671a4159",
+        owner: "ayush16999"
+      },
+    }
   },
   extra: {
     apiKey: "AIzaSyCzDrL4iT9ag6bjxH6ZiG3c5lxP7uQyvfs",
@@ -38,3 +45,4 @@ export default {
     measurementId: "G-PYQ4BND1VD",
   },
 };
+

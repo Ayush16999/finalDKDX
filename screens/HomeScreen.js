@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   Animated,
   TextInput,
+  Linking,
+  Button,
 } from "react-native";
 import React, { useContext, useEffect, useRef, useState } from "react";
 // import HomeHeader from '../components/HomeHeader';
@@ -15,7 +17,7 @@ import Home from "../components/Home";
 import home from "../assets/home.png";
 import search from "../assets/heart.png";
 import notifications from "../assets/bell.png";
-import settings from "../assets/settings.png";
+import settings from "../assets/bell2.png";
 import logout from "../assets/logout.png";
 // Menu
 import menu from "../assets/menu.png";
@@ -56,16 +58,16 @@ const HomeScreen = ({ navigation }) => {
   const closeButtonOffset = useRef(new Animated.Value(0)).current;
 
   function handleSearchInput() {
-    let searchData = searchData.toLowerCase();
-    if (searchData.length === 1 || searchData.length <= 1) {
+    let searchLowerData = searchData.toLowerCase();
+    if (searchLowerData.length === 1 || searchLowerData.length <= 1) {
       setSearchInput(false);
     }
-    if (searchData.length >= 2) {
+    if (searchLowerData.length >= 2) {
       setSearchInput(true);
       let tempdata = data.filter((object) => {
         let title = object.title.toLowerCase();
 
-        if (title.includes(searchData)) {
+        if (title.includes(searchLowerData)) {
           return object;
         }
       });
@@ -90,7 +92,7 @@ const HomeScreen = ({ navigation }) => {
           {TabButton(currentTab, setCurrentTab, "Home", home)}
           {TabButton(currentTab, setCurrentTab, "Favourite", search)}
           {TabButton(currentTab, setCurrentTab, "Help", notifications)}
-          {TabButton(currentTab, setCurrentTab, "Account", settings)}
+          {TabButton(currentTab, setCurrentTab, "Follow Us", settings)}
         </View>
 
         <View>{TabButton(currentTab, setCurrentTab, "LogOut", logout)}</View>
@@ -164,7 +166,7 @@ const HomeScreen = ({ navigation }) => {
 
               {(currentTab === "Favourite" ||
                 currentTab === "Help" ||
-                currentTab === "Account") && (
+                currentTab === "Follow Us") && (
                 <TouchableOpacity onPress={() => setCurrentTab("Home")}>
                   <BackIcon name="arrow-left" size={40} />
                 </TouchableOpacity>
@@ -312,7 +314,7 @@ const HomeScreen = ({ navigation }) => {
               {currentTab === "Home" && <Home />}
               {currentTab === "Favourite" && <WishlistScreen />}
               {currentTab === "Help" && <HelpScreen />}
-              {currentTab === "Account" && <AccountScreen />}
+              {currentTab === "Follow Us" &&  <AccountScreen /> }
             </View>
           )}
         </Animated.View>
@@ -323,7 +325,7 @@ const HomeScreen = ({ navigation }) => {
 
 const TabButton = (currentTab, setCurrentTab, title, image) => {
   const navigation = useNavigation();
-  const { logOut , validUser, setValidUser } = useContext(userAuthContext);
+  const { logOut, validUser, setValidUser } = useContext(userAuthContext);
 
   return (
     <TouchableOpacity
@@ -333,12 +335,12 @@ const TabButton = (currentTab, setCurrentTab, title, image) => {
           logOut();
           try {
             await AsyncStorage.removeItem("user");
-            setValidUser(null)
+            setValidUser(null);
             console.log("user deleted");
           } catch (error) {
             console.log(error);
           }
-          
+
           navigation.dispatch(StackActions.replace("Login"));
         } else {
           setCurrentTab(title);
